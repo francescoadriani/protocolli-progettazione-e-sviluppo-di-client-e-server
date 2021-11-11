@@ -6,7 +6,9 @@ namespace RandomizzatoreServer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Server opened");
+            ClientHandler clientHandler = new ClientHandler("127.0.0.1", 10144);
+            clientHandler.start();
         }
     }
 }

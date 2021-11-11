@@ -1,0 +1,13 @@
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\bin\Debug\netcoreapp3.1\RandomizzatoreServer.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\bin\Debug\netcoreapp3.1\RandomizzatoreServer.deps.json
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\bin\Debug\netcoreapp3.1\RandomizzatoreServer.runtimeconfig.json
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\bin\Debug\netcoreapp3.1\RandomizzatoreServer.runtimeconfig.dev.json
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\bin\Debug\netcoreapp3.1\RandomizzatoreServer.dll
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\bin\Debug\netcoreapp3.1\RandomizzatoreServer.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\obj\Debug\netcoreapp3.1\RandomizzatoreServer.csproj.AssemblyReference.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\obj\Debug\netcoreapp3.1\RandomizzatoreServer.AssemblyInfoInputs.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\obj\Debug\netcoreapp3.1\RandomizzatoreServer.AssemblyInfo.cs
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\obj\Debug\netcoreapp3.1\RandomizzatoreServer.csproj.CoreCompileInputs.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\obj\Debug\netcoreapp3.1\RandomizzatoreServer.dll
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\obj\Debug\netcoreapp3.1\RandomizzatoreServer.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServer\obj\Debug\netcoreapp3.1\RandomizzatoreServer.genruntimeconfig.cache
