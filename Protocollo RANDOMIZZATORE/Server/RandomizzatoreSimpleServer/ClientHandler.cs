@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Net.Sockets;
 using System.Text;
 
-namespace RandomizzatoreServer
+namespace RandomizzatoreSimpleServer
 {
     /// <summary>
     /// la classe gestisce un client o per meglio dire gestisce un socket che rappresenta il client
