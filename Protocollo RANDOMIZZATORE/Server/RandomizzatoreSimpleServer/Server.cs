@@ -50,7 +50,7 @@ namespace RandomizzatoreSimpleServer
             IPEndPoint iPEndPoint = new IPEndPoint(localAddr, port);
             server = new Socket(SocketType.Stream, ProtocolType.Tcp);
             server.Bind(iPEndPoint);
-            server.Listen(10);
+            server.Listen(1);
             try
             {
                 while (true)
