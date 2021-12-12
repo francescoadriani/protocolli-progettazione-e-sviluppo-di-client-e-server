@@ -1,0 +1,7 @@
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServerPool\bin\Debug\RandomizzatoreServerPool.exe.config
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServerPool\bin\Debug\RandomizzatoreServerPool.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServerPool\bin\Debug\RandomizzatoreServerPool.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServerPool\obj\Debug\RandomizzatoreServerPool.csproj.AssemblyReference.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServerPool\obj\Debug\RandomizzatoreServerPool.csproj.CoreCompileInputs.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServerPool\obj\Debug\RandomizzatoreServerPool.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Server\RandomizzatoreServerPool\obj\Debug\RandomizzatoreServerPool.pdb
