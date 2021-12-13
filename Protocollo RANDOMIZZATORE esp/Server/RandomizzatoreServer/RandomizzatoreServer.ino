@@ -35,24 +35,12 @@ void loop() {
         int indexOfSecondPare = message.indexOf("]");
         if (indexOfSeparator>-1 && indexOfSecondPare>-1)
         {
-          Serial.print("New min: ");
-          Serial.println(message.substring(4,indexOfSeparator));
-          Serial.print("New max: ");
-          Serial.println(message.substring(indexOfSeparator+1,indexOfSecondPare));
           min = message.substring(4,indexOfSeparator).toDouble();
           max = message.substring(indexOfSeparator+1,indexOfSecondPare).toDouble();
         }
       }
-      Serial.print("min: ");
-      Serial.println(String(min));
-      Serial.print("max: ");
-      Serial.println(String(max));
       double rnd = random(1000000);
-      Serial.print("rnd: ");
-      Serial.println(String(rnd));
       double rndMinMax = min + (rnd * (max-min) /1000000.0);
-      Serial.print("rndMinMax: ");
-      Serial.println(String(rndMinMax));
       answer = String(rndMinMax);
     }
     else if (message.indexOf("CLOSE")>-1)
