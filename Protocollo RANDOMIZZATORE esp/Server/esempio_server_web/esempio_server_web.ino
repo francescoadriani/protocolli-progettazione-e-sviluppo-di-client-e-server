@@ -1,6 +1,6 @@
 #include <ESP8266WiFi.h> // #include <WiFi.h>
 const char* ssid = "nomewifi";
-const char* password = "passwordwifi";
+const char* password = "pwswifi";
 WiFiServer serverTcp(10103);
 void setup() {
   Serial.begin(115200);
@@ -20,6 +20,7 @@ void loop() {
     while(!clientTcp.available()){ delay(1); }
     String message = clientTcp.readStringUntil('\r');
     message.replace("\n","");
+    message.replace("\r","");
     Serial.println(message);
     clientTcp.print("ECHO:");
     clientTcp.println(message);
