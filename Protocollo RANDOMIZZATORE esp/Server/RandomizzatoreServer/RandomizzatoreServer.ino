@@ -1,14 +1,26 @@
 #include <ESP8266WiFi.h> // #include <WiFi.h>
-const char* ssid = "ASUS_RiceWLan";
-const char* password = "pippoplutopaperinominnie";
+const char* ssid = "esp8266_AP";
+const char* password = "12345678";
 WiFiServer serverTcp(10103);
 void setup() {
   randomSeed(analogRead(0));
   Serial.begin(115200);
-  WiFi.begin(ssid,password);
-  while(WiFi.status() != WL_CONNECTED ){ delay(500); }
-  Serial.print("Wifi Connected Success!, IP Address: ");
-  Serial.println(WiFi.localIP() );
+  WiFi.mode(WIFI_AP); // attivazione della wifi come client wifi
+  WiFi.softAP(ssid, password); // attiva la modalità Access Point 
+  Serial.println();
+  Serial.print("MAC Address: ");
+  Serial.println(WiFi.macAddress());
+  Serial.print("AP activated!, SSID: ");
+  Serial.println(ssid);
+  Serial.print("PASSWORD: ");
+  Serial.println(password);
+  Serial.print("AP ip address: ");
+  Serial.println(WiFi.softAPIP());
+  
+  //WiFi.begin(ssid,password);
+  //while(WiFi.status() != WL_CONNECTED ){ delay(500); }
+  //Serial.print("Wifi Connected Success!, IP Address: ");
+  //Serial.println(WiFi.localIP() );
   serverTcp.begin();
   Serial.println("Server started on port 10103");
 }
