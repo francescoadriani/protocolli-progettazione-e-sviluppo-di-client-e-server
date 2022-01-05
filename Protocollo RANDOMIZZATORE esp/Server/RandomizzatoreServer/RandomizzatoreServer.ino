@@ -1,12 +1,12 @@
-#include <WiFi.h> // #include <ESP8266WiFi.h> // 
+#include <WiFi.h> // #include <ESP8266WiFi.h> //
 #define LED_BUILTIN 2
-const char* ssid = "esp8266_AP";
+const char* ssid = "esp32_AP";
 const char* password = "12345678";
 WiFiServer serverTcp(10103);
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   randomSeed(analogRead(0));
-  Serial.begin(9600);
+  Serial.begin(115200);
   WiFi.mode(WIFI_AP); // attivazione della wifi come client wifi
   WiFi.softAP(ssid, password); // attiva la modalità Access Point
   Serial.println();
@@ -73,8 +73,9 @@ void loop() {
       clientTcp.stop();
       return;
     }
-    else
+    else if (message.length() > 0)
       answer = "COMMAND UNKNOW";
     clientTcp.println(answer);
+    Serial.println(answer);
   }
 }

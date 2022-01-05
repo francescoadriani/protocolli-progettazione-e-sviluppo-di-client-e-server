@@ -1,15 +1,20 @@
-#include <ESP8266WiFi.h> // #include <WiFi.h>
+#include <WiFi.h> // #include <ESP8266WiFi.h> //
 #define LED_BUILTIN 2
 const char* ssid = "nomewifi";
 const char* password = "pwswifi";
 WiFiServer serverTcp(10103);
 void setup() {
+  Serial.print("Program started, wait for wifi connection);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);   // turn the LED on (HIGH is the voltage level)
   Serial.begin(115200);
   WiFi.begin(ssid,password);
-  while(WiFi.status() != WL_CONNECTED ){ delay(500); }
-  Serial.print("Wifi Connected Success!\n\rIP Address: ");
+  while(WiFi.status() != WL_CONNECTED )
+  { 
+    Serial.print("."); 
+    delay(500); 
+  }
+  Serial.print("\n\rWifi Connected Success!\n\rIP Address: ");
   Serial.println(WiFi.localIP() );
   Serial.print("MAC Address: ");
   Serial.println(WiFi.macAddress());
