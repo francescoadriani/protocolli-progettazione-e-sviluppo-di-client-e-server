@@ -4,7 +4,7 @@ const char* ssid = "nomewifi";
 const char* password = "pwswifi";
 WiFiServer serverTcp(10103);
 void setup() {
-  Serial.print("Program started, wait for wifi connection);
+  Serial.print("Program started, wait for wifi connection");
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);   // turn the LED on (HIGH is the voltage level)
   Serial.begin(115200);
