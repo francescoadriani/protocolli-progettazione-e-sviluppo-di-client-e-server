@@ -40,9 +40,9 @@ namespace RandomizzatoreServerPool
         }
 
         /// <summary>
-        /// è il metodo che avvia il server e si mette in ascolto di client
+        /// è il metodo che avvia il server e si mette in ascolto di datagrammi di client
         /// termina solo se ci sono eccezioni spengendo il socket server
-        /// nel ciclo che cattura connessioni in ingresso vengono lanciati thread di clientHandler che gestiscono singolarmente un socket che rappresenta un client
+        /// nel ciclo che cattura i datagrammi in ingresso vengono lanciati thread di messageHandler che gestiscono singolarmente un messaggio
         /// </summary>
         public void start()
         {

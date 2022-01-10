@@ -9,22 +9,33 @@ using System.Threading;
 namespace RandomizzatoreServerPool
 {
     /// <summary>
-    /// la classe gestisce un client o per meglio dire gestisce un socket che rappresenta il client
+    /// la classe gestisce un messaggio di un client
     /// </summary>
     public class MessageHandler
     {
         /// <summary>
-        /// metodo statico che gestisce una singola connessione con un client
-        /// il metodo inizia e finisce dal momento che il socket è attivo
-        /// il parametro client è un Socket che rappresenta il client
+        /// dizionario che memorizza lo stato della connessione relativa ad ogni ip
         /// </summary>
-        /// <param name="client"></param>
+        public static Dictionary<String, State> ipStringState = new Dictionary<string, State>();
+
+        /// <summary>
+        /// metodo statico che gestisce un messaggio di un client
+        /// il parametro clientEPAndMessageObj è una coppia: endpoint del client e messaggio ricevuto
+        /// </summary>
+        /// <param name="clientEPAndMessageObj"></param>
         public static byte[] handle(byte[] byteData, int lenght, EndPoint clientEP)
         {
             Encoding encoding = Encoding.ASCII;
+            IPEndPoint iPEndPoint = (IPEndPoint)clientEP;
 
             double min = 0;
             double max = 1;
+
+            if (ipStringState.ContainsKey(iPEndPoint.Address.ToString()))
+            {
+                min = ipStringState[iPEndPoint.Address.ToString()].Min;
+                max = ipStringState[iPEndPoint.Address.ToString()].Max;
+            }
 
             String answer = "";
             String message = "";
@@ -54,6 +65,15 @@ namespace RandomizzatoreServerPool
                             {
                                 min = minTemp;
                                 max = maxTemp;
+                                if (ipStringState.ContainsKey(iPEndPoint.Address.ToString()))
+                                {
+                                    ipStringState[iPEndPoint.Address.ToString()].Min = min;
+                                    ipStringState[iPEndPoint.Address.ToString()].Max = max;
+                                }
+                                else
+                                {
+                                    ipStringState.Add(iPEndPoint.Address.ToString(), new State(min, max));
+                                }
                             }
                         }
                     }

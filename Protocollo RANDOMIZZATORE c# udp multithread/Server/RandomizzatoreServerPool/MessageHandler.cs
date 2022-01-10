@@ -9,25 +9,35 @@ using System.Threading;
 namespace RandomizzatoreServerPool
 {
     /// <summary>
-    /// la classe gestisce un client o per meglio dire gestisce un socket che rappresenta il client
+    /// la classe gestisce un messaggio di un client
     /// </summary>
     public class MessageHandler
-    {
+    { 
         /// <summary>
-        /// metodo statico che gestisce una singola connessione con un client
-        /// il metodo inizia e finisce dal momento che il socket è attivo
-        /// il parametro client è un Socket che rappresenta il client
+        /// dizionario che memorizza lo stato della connessione relativa ad ogni ip
         /// </summary>
-        /// <param name="client"></param>
+        public static Dictionary<String, State> ipStringState = new Dictionary<string, State>();
+
+        /// <summary>
+        /// metodo statico che gestisce un messaggio di un client
+        /// il parametro clientEPAndMessageObj è una coppia: endpoint del client e messaggio ricevuto
+        /// </summary>
+        /// <param name="clientEPAndMessageObj"></param>
         public static void handle(Object clientEPAndMessageObj)
         {
             Encoding encoding = Encoding.ASCII;
             ClientEPAndMessage clientEPAndMessage = (ClientEPAndMessage)clientEPAndMessageObj;
-            IPEndPoint clientEP = clientEPAndMessage.clientEP;
+            IPEndPoint iPEndPoint = clientEPAndMessage.clientEP;
 
             byte[] byteData = clientEPAndMessage.messageData;
             double min = 0;
             double max = 1;
+
+            if (ipStringState.ContainsKey(iPEndPoint.Address.ToString()))
+            {
+                min = ipStringState[iPEndPoint.Address.ToString()].Min;
+                max = ipStringState[iPEndPoint.Address.ToString()].Max;
+            }
 
             String answer = "";
             String message = "";
@@ -40,7 +50,7 @@ namespace RandomizzatoreServerPool
                 //pulizia del messaggio dagli a capo
                 message = message.Replace(Environment.NewLine, "");
 
-                Console.WriteLine("Message received: " + message + " from " + clientEP);
+                Console.WriteLine("Message received: " + message + " from " + iPEndPoint);
 
                 //se c'è un messaggio get oppure get[min;max]
                 if (message.ToLower() == ("get") || (message.ToLower().StartsWith("get") && (message.Split('[').Length > 1 && message.Contains("]"))))
@@ -57,6 +67,15 @@ namespace RandomizzatoreServerPool
                             {
                                 min = minTemp;
                                 max = maxTemp;
+                                if (ipStringState.ContainsKey(iPEndPoint.Address.ToString()))
+                                {
+                                    ipStringState[iPEndPoint.Address.ToString()].Min = min;
+                                    ipStringState[iPEndPoint.Address.ToString()].Max = max;
+                                }
+                                else
+                                {
+                                    ipStringState.Add(iPEndPoint.Address.ToString(), new State(min, max));
+                                }
                             }
                         }
                     }
@@ -78,7 +97,8 @@ namespace RandomizzatoreServerPool
                 Console.WriteLine("Exception: {0}", e.ToString());
             }
             Console.WriteLine("Answer: " + answer);
-            clientEPAndMessage.RaiseAnswerReadyEvent(new AnswerReadyEventArgs(message, encoding.GetBytes(answer), clientEP));
+            clientEPAndMessage.RaiseAnswerReadyEvent(
+                new AnswerReadyEventArgs(message, encoding.GetBytes(answer), iPEndPoint));
         }
     }
 }
