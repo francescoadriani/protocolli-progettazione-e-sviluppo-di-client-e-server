@@ -1,0 +1,14 @@
+C:\Users\Rice Cipriani\Downloads\dotnet-csharp-master\dotnet-csharp-master\restservice\restservice\bin\Debug\restservice.exe.config
+C:\Users\Rice Cipriani\Downloads\dotnet-csharp-master\dotnet-csharp-master\restservice\restservice\bin\Debug\restservice.exe
+C:\Users\Rice Cipriani\Downloads\dotnet-csharp-master\dotnet-csharp-master\restservice\restservice\bin\Debug\restservice.pdb
+C:\Users\Rice Cipriani\Downloads\dotnet-csharp-master\dotnet-csharp-master\restservice\restservice\obj\Debug\restservice.csproj.AssemblyReference.cache
+C:\Users\Rice Cipriani\Downloads\dotnet-csharp-master\dotnet-csharp-master\restservice\restservice\obj\Debug\restservice.csproj.CoreCompileInputs.cache
+C:\Users\Rice Cipriani\Downloads\dotnet-csharp-master\dotnet-csharp-master\restservice\restservice\obj\Debug\restservice.exe
+C:\Users\Rice Cipriani\Downloads\dotnet-csharp-master\dotnet-csharp-master\restservice\restservice\obj\Debug\restservice.pdb
+C:\Users\Rice Cipriani\Downloads\restservice\restservice\bin\Debug\restservice.exe.config
+C:\Users\Rice Cipriani\Downloads\restservice\restservice\bin\Debug\restservice.exe
+C:\Users\Rice Cipriani\Downloads\restservice\restservice\bin\Debug\restservice.pdb
+C:\Users\Rice Cipriani\Downloads\restservice\restservice\obj\Debug\restservice.csproj.AssemblyReference.cache
+C:\Users\Rice Cipriani\Downloads\restservice\restservice\obj\Debug\restservice.csproj.CoreCompileInputs.cache
+C:\Users\Rice Cipriani\Downloads\restservice\restservice\obj\Debug\restservice.exe
+C:\Users\Rice Cipriani\Downloads\restservice\restservice\obj\Debug\restservice.pdb

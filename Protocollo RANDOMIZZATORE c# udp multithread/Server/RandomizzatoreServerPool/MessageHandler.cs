@@ -23,7 +23,7 @@ namespace RandomizzatoreServerPool
         /// il parametro clientEPAndMessageObj è una coppia: endpoint del client e messaggio ricevuto
         /// </summary>
         /// <param name="clientEPAndMessageObj"></param>
-        public static void handle(Object clientEPAndMessageObj)
+        public static void handle(int clientEPAndMessageObj)
         {
             Encoding encoding = Encoding.ASCII;
             ClientEPAndMessage clientEPAndMessage = (ClientEPAndMessage)clientEPAndMessageObj;

@@ -1,0 +1,10 @@
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\bin\Debug\RandomizzatoreClient.exe.config
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\bin\Debug\RandomizzatoreClient.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\bin\Debug\RandomizzatoreClient.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.csproj.AssemblyReference.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.FrmMain.resources
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.Properties.Resources.resources
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.csproj.GenerateResource.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.csproj.CoreCompileInputs.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.pdb
