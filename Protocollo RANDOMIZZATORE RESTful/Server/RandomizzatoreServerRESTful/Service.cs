@@ -1,18 +1,27 @@
 ﻿using RandomizzatoreClient;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.ServiceModel.Web;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace RandomizzatoreServerRESTful
 {
     public class Service : IService
     {
         Random rnd = new Random();
+        public RandomResult ReadRandom(String minString, String maxString)
+        {
+            double res = -1;
+            double minTemp = 0;
+            double maxTemp = 0;
+            if (double.TryParse(minString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out minTemp))
+                if (double.TryParse(maxString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out maxTemp))
+                    res = minTemp + rnd.NextDouble() * (maxTemp - minTemp);
+            return new RandomResult { Random = res, Max = maxTemp, Min = minTemp };
+        }
 
         public object READ()
         {
@@ -24,22 +33,6 @@ namespace RandomizzatoreServerRESTful
             {
                 return null;
             }
-        }
-
-        public RandomResult ReadRandom(String minString, String maxString)
-        {
-            double res = -1;
-            double minTemp = 0;
-            double maxTemp = 0;
-            if (double.TryParse(minString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out minTemp))
-            {
-                if (double.TryParse(maxString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out maxTemp))
-                {
-                    res = minTemp + rnd.NextDouble() * (maxTemp - minTemp);
-                    
-                }
-            }
-            return new RandomResult { Random = res, Max = maxTemp, Min = minTemp };
         }
 
         public String ReadTutorialbyID(String Tutorialid)

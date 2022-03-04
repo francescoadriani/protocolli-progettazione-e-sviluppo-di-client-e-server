@@ -18,19 +18,22 @@ namespace RandomizzatoreServerRESTful
         [WebInvoke(Method = "GET",
              ResponseFormat = WebMessageFormat.Json,
              BodyStyle = WebMessageBodyStyle.Wrapped,
-             UriTemplate = "/")]
-        [return: MessageParameter(Name = "Data")]
-        object READ(); //READ cioè il nome del metodo è il nome della risorsa restituita
-
+             UriTemplate = "/random/?min={minString}&max={maxString}")]
+        [return: MessageParameter(Name = "RandomValueExtract")]
+        RandomResult ReadRandom(String minString, String maxString);
 
 
         [OperationContract]
         [WebInvoke(Method = "GET",
              ResponseFormat = WebMessageFormat.Json,
              BodyStyle = WebMessageBodyStyle.Wrapped,
-             UriTemplate = "/random/?min={minString}&max={maxString}")]
-        [return: MessageParameter(Name = "RandomValueExtract")]
-        RandomResult ReadRandom(String minString,String maxString);
+             UriTemplate = "/")]
+        [return: MessageParameter(Name = "Data")]
+        object READ(); //READ cioè il nome del metodo è il nome della risorsa restituita
+
+
+
+
 
 
         [OperationContract]
