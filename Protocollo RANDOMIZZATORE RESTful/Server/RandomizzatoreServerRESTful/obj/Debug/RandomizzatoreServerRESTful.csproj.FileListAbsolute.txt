@@ -1,7 +1,0 @@
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Server\RandomizzatoreServerRESTful\bin\Debug\restservice.exe.config
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Server\RandomizzatoreServerRESTful\bin\Debug\restservice.exe
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Server\RandomizzatoreServerRESTful\bin\Debug\restservice.pdb
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Server\RandomizzatoreServerRESTful\obj\Debug\RandomizzatoreServerRESTful.csproj.AssemblyReference.cache
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Server\RandomizzatoreServerRESTful\obj\Debug\RandomizzatoreServerRESTful.csproj.CoreCompileInputs.cache
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Server\RandomizzatoreServerRESTful\obj\Debug\restservice.exe
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Server\RandomizzatoreServerRESTful\obj\Debug\restservice.pdb
