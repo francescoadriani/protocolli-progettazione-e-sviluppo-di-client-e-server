@@ -5,7 +5,7 @@ namespace restservice.Discography
     [DebuggerDisplay("{Name} (ArtistId = {ArtistId})")]
     public class Artist
     {
-        public int ArtistId { get; set; }
+        public Link<long> ID { get; set; }
         public string Name { get; set; }
     }
 }

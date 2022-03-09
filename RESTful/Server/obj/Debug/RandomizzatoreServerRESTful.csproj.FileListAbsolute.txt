@@ -15,4 +15,4 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\Rand
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\RandomizzatoreServerRESTful.csproj.CopyComplete
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\restservice.exe
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\restservice.pdb
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\RandomizzatoreServerRESTful.csproj.AssemblyReference.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\RandomizzatoreServerRESTful.csprojAssemblyReference.cache
