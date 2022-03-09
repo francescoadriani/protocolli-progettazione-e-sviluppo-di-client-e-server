@@ -11,6 +11,7 @@ namespace RandomizzatoreServerRESTful
 {
     class Program
     {
+        public static string root = "";
         static void Main(string[] args)
         {
             WebServiceHost hostWeb = new WebServiceHost(typeof(RandomizzatoreServerRESTful.Service));
@@ -19,6 +20,7 @@ namespace RandomizzatoreServerRESTful
             stp.HttpHelpPageEnabled = false;
             hostWeb.Open();
 
+            root = hostWeb.BaseAddresses[0].ToString();
             Console.WriteLine("Service Host started @" + hostWeb.BaseAddresses[0]);
 
             var methods = typeof(RandomizzatoreServerRESTful.IService).GetMethods();

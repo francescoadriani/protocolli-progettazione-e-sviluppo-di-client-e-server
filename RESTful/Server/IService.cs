@@ -1,4 +1,5 @@
 ﻿using RandomizzatoreClient;
+using restservice.Discography;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +34,13 @@ namespace RandomizzatoreServerRESTful
 
 
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+             ResponseFormat = WebMessageFormat.Json,
+             BodyStyle = WebMessageBodyStyle.Wrapped,
+             UriTemplate = "/tracks/{TrackID}")]
+        [return: MessageParameter(Name = "track")]
+        Track ReadTrackByID(String TrackID);
 
 
 

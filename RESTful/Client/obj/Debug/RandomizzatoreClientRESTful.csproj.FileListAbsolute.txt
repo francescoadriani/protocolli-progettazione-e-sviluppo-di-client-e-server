@@ -11,3 +11,16 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-c
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Client\RandomizzatoreClientRESTful\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Client\RandomizzatoreClientRESTful\obj\Debug\RandomizzatoreClientRESTful.csproj.CopyComplete
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\Protocollo RANDOMIZZATORE RESTful\Client\RandomizzatoreClientRESTful\obj\Debug\RandomizzatoreClientRESTful.csprojAssemblyReference.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\bin\Debug\RandomizzatoreClient.exe.config
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\bin\Debug\RandomizzatoreClient.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\bin\Debug\RandomizzatoreClient.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\obj\Debug\RandomizzatoreClientRESTful.csprojAssemblyReference.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\obj\Debug\RandomizzatoreClient.FrmMain.resources
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\obj\Debug\RandomizzatoreClient.Properties.Resources.resources
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\obj\Debug\RandomizzatoreClientRESTful.csproj.GenerateResource.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\obj\Debug\RandomizzatoreClientRESTful.csproj.CoreCompileInputs.cache
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\obj\Debug\RandomizzatoreClientRESTful.csproj.CopyComplete
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\obj\Debug\RandomizzatoreClient.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Client\obj\Debug\RandomizzatoreClient.pdb

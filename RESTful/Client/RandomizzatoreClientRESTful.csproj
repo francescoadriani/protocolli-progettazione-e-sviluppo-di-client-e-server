@@ -50,6 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Discography\Album.cs" />
+    <Compile Include="Discography\Artist.cs" />
+    <Compile Include="Discography\Customer.cs" />
+    <Compile Include="Discography\Employee.cs" />
+    <Compile Include="Discography\Genre.cs" />
+    <Compile Include="Discography\Invoice.cs" />
+    <Compile Include="Discography\InvoiceLine.cs" />
+    <Compile Include="Discography\Link.cs" />
+    <Compile Include="Discography\MediaType.cs" />
+    <Compile Include="Discography\Playlist.cs" />
+    <Compile Include="Discography\PlaylistTrack.cs" />
+    <Compile Include="Discography\Track.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using restservice.Discography;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,23 @@ namespace RandomizzatoreClient
         public FrmMain()
         {
             InitializeComponent();
+
+            string responseBody = null;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:8080/tracks/1");
+            request.Method = "GET";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream responseStream = response.GetResponseStream();
+                if (responseStream != null)
+                    responseBody = new StreamReader(responseStream).ReadToEnd();
+            }
+            response.Close();
+
+            TrackContainer result = JsonConvert.DeserializeObject<TrackContainer>(responseBody,
+                new JsonSerializerSettings() { Culture = System.Globalization.CultureInfo.GetCultureInfo("it-IT") });
+
+            Track track = result.track;
         }
 
         private void btnGetInt_Click(object sender, EventArgs e)

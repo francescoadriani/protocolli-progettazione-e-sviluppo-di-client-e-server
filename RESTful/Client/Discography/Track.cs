@@ -19,4 +19,8 @@ namespace restservice.Discography
         //public Link<MediaType> MediaType { get; set; }
         //public Link<Genre> Genre { get; set; }
     }
+    public class TrackContainer
+    {
+        public Track track { get; set; }
+    }
 }
