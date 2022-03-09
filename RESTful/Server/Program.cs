@@ -15,9 +15,14 @@ namespace RandomizzatoreServerRESTful
         static void Main(string[] args)
         {
             WebServiceHost hostWeb = new WebServiceHost(typeof(RandomizzatoreServerRESTful.Service));
+
+            //hostWeb.AddServiceEndpoint(typeof(ICustomerCollection), new WebHttpBinding(), "");
+            //hostWeb.Description.Endpoints[0].Behaviors.Add(new WebHttpBehavior { EnableHelp = true });
+
             ServiceEndpoint ep = hostWeb.AddServiceEndpoint(typeof(RandomizzatoreServerRESTful.IService), new WebHttpBinding(), "");
+            hostWeb.Description.Endpoints[1].Behaviors.Add(new WebHttpBehavior { HelpEnabled = true });
             ServiceDebugBehavior stp = hostWeb.Description.Behaviors.Find<ServiceDebugBehavior>();
-            stp.HttpHelpPageEnabled = false;
+            stp.HttpHelpPageEnabled = true;
             hostWeb.Open();
 
             root = hostWeb.BaseAddresses[0].ToString();

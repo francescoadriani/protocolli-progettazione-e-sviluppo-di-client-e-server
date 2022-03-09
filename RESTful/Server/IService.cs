@@ -21,6 +21,7 @@ namespace RandomizzatoreServerRESTful
              BodyStyle = WebMessageBodyStyle.Wrapped,
              UriTemplate = "/random/?min={minString}&max={maxString}")]
         [return: MessageParameter(Name = "RandomValueExtract")]
+        [Description("The image associated with the control"), Category("Appearance")]
         RandomResult ReadRandom(String minString, String maxString);
 
 
@@ -30,6 +31,7 @@ namespace RandomizzatoreServerRESTful
              BodyStyle = WebMessageBodyStyle.Wrapped,
              UriTemplate = "/")]
         [return: MessageParameter(Name = "Data")]
+        [System.ComponentModel.Description("Comando semplice di base")]
         object READ(); //READ cioè il nome del metodo è il nome della risorsa restituita
 
 
@@ -39,6 +41,7 @@ namespace RandomizzatoreServerRESTful
              ResponseFormat = WebMessageFormat.Json,
              BodyStyle = WebMessageBodyStyle.Wrapped,
              UriTemplate = "/tracks/{TrackID}")]
+        [System.ComponentModel.Description("Fornisce i dettagli della traccia.")]
         [return: MessageParameter(Name = "track")]
         Track ReadTrackByID(String TrackID);
 
@@ -59,6 +62,7 @@ namespace RandomizzatoreServerRESTful
             UriTemplate = "/Tutorial/{Tutorialid}",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped)]
+        [System.ComponentModel.Description("Comando semplice di base")]
         void DeleteTutorial(String Tutorialid);
 
 

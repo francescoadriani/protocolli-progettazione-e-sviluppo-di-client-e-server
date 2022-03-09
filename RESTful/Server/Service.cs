@@ -93,7 +93,7 @@ namespace RandomizzatoreServerRESTful
 
             SQLiteCommand cmd = new SQLiteCommand(con);
 
-            cmd.CommandText = "SELECT * FROM cars";
+            cmd.CommandText = "SELECT * FROM tracks";
             cmd.ExecuteNonQuery();
 
             try

@@ -11,8 +11,8 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\rest
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\restservice.pdb
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\System.Data.SQLite.dll
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\System.Data.SQLite.xml
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\RandomizzatoreServerRESTful.csprojAssemblyReference.cache
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\RandomizzatoreServerRESTful.csproj.CoreCompileInputs.cache
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\RandomizzatoreServerRESTful.csproj.CopyComplete
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\restservice.exe
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\restservice.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\RandomizzatoreServerRESTful.csproj.AssemblyReference.cache
