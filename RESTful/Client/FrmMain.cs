@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using restservice.Discography;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RandomizzatoreClient
+namespace AudioLibraryClientRESTful
 {
     public partial class FrmMain : Form
     {
@@ -34,10 +33,10 @@ namespace RandomizzatoreClient
             }
             response.Close();
 
-            TrackContainer result = JsonConvert.DeserializeObject<TrackContainer>(responseBody,
-                new JsonSerializerSettings() { Culture = System.Globalization.CultureInfo.GetCultureInfo("it-IT") });
+            //TrackContainer result = JsonConvert.DeserializeObject<TrackContainer>(responseBody,
+            //    new JsonSerializerSettings() { Culture = System.Globalization.CultureInfo.GetCultureInfo("it-IT") });
 
-            Track track = result.track;
+            //Track track = result.track;
         }
 
         private void btnGetInt_Click(object sender, EventArgs e)
@@ -82,11 +81,11 @@ namespace RandomizzatoreClient
                 }
                 response.Close();
 
-                ResultContainer result = JsonConvert.DeserializeObject<ResultContainer>(responseBody, 
-                    new JsonSerializerSettings() {Culture = System.Globalization.CultureInfo.GetCultureInfo("it-IT")});
+                //ResultContainer result = JsonConvert.DeserializeObject<ResultContainer>(responseBody, 
+                //    new JsonSerializerSettings() {Culture = System.Globalization.CultureInfo.GetCultureInfo("it-IT")});
                 
-                RandomResult randomResult = result.RandomValueExtract;
-                num = randomResult.Random;
+                //RandomResult randomResult = result.RandomValueExtract;
+                //num = randomResult.Random;
             }
             catch (Exception ex)
             {

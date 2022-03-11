@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace restservice.Discography
+namespace AudioLibraryServerRESTful.Discography
 {
     [DebuggerDisplay("{Title} (AlbumId = {AlbumId})")]
     public class Album
     {
-        public long ID;
+        public Link<long> ID;
         public String Title { get; set; }
         public Link<long> Artist { get; set; }
+        public List<Link<long>> TracksList { get; set; } = new List<Link<long>>();
     }
 }

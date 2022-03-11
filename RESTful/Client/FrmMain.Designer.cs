@@ -1,5 +1,5 @@
 ﻿
-namespace RandomizzatoreClient
+namespace AudioLibraryClientRESTful
 {
     partial class FrmMain
     {
@@ -96,7 +96,7 @@ namespace RandomizzatoreClient
             // 
             // picDadi
             // 
-            this.picDadi.Image = global::RandomizzatoreClient.Properties.Resources.dadi_immagine_animata_0092;
+            this.picDadi.Image = global::AudioLibraryClientRESTful.Properties.Resources.dadi_immagine_animata_0092;
             this.picDadi.Location = new System.Drawing.Point(251, 230);
             this.picDadi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picDadi.Name = "picDadi";

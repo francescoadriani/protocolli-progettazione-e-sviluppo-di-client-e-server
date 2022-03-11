@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace restservice.Discography
+namespace AudioLibraryServerRESTful.Discography
 {
     [DebuggerDisplay("{Name} (PlaylistId = {PlaylistId})")]
     public class Playlist

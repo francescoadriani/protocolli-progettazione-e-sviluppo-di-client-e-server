@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace restservice.Discography
+namespace AudioLibraryServerRESTful.Discography
 {
     [DataContract]
     public class Link<E>

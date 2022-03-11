@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace restservice.Discography
+namespace AudioLibraryServerRESTful.Discography
 {
     [DebuggerDisplay("InvoiceLineId = {InvoiceLineId}")]
     public class InvoiceLine

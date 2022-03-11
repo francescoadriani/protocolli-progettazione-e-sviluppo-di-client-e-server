@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Runtime.Serialization;
 
-namespace restservice.Discography
+namespace AudioLibraryServerRESTful.Discography
 {
     [DebuggerDisplay("PlaylistId = {PlaylistId}, TrackId = {TrackId}")]
     public class PlaylistTrack

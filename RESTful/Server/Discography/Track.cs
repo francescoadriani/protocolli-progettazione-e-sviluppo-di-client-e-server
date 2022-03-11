@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
 using System.Runtime.Serialization;
 
-namespace restservice.Discography
+namespace AudioLibraryServerRESTful.Discography
 {
     [DebuggerDisplay("{Name} (TrackId = {TrackId})")]
     public class Track
     {
-        public long TrackId { get; set; }
+        public Link<long> ID { get; set; }
         public string Name { get; set; }
         public string Composer { get; set; }
         public long Milliseconds { get; set; }
@@ -15,8 +15,10 @@ namespace restservice.Discography
         public Link<long> Album { get; set; }
         public Link<long> MediaType { get; set; }
         public Link<long> Genre { get; set; }
-        //public Link<Album> Album { get; set; }
-        //public Link<MediaType> MediaType { get; set; }
-        //public Link<Genre> Genre { get; set; }
+    }
+
+    public class TrackContainer
+    {
+        public Track track;
     }
 }

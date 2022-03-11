@@ -1,11 +1,13 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
-namespace restservice.Discography
+namespace AudioLibraryServerRESTful.Discography
 {
     [DebuggerDisplay("{Name} (MediaTypeId = {MediaTypeId})")]
     public class MediaType
     {
-        public int MediaTypeId { get; set; }
+        public Link<long> ID { get; set; }
         public string Name { get; set; }
+        public List<Link<long>> TracksList { get; set; } = new List<Link<long>>();
     }
 }

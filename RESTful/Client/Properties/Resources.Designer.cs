@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RandomizzatoreClient.Properties {
+namespace AudioLibraryClientRESTful.Properties {
     using System;
     
     

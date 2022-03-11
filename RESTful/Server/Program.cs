@@ -7,19 +7,19 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomizzatoreServerRESTful
+namespace AudioLibraryServerRESTful
 {
     class Program
     {
         public static string root = "";
         static void Main(string[] args)
         {
-            WebServiceHost hostWeb = new WebServiceHost(typeof(RandomizzatoreServerRESTful.Service));
+            WebServiceHost hostWeb = new WebServiceHost(typeof(AudioLibraryServerRESTful.Service));
 
             //hostWeb.AddServiceEndpoint(typeof(ICustomerCollection), new WebHttpBinding(), "");
             //hostWeb.Description.Endpoints[0].Behaviors.Add(new WebHttpBehavior { EnableHelp = true });
 
-            ServiceEndpoint ep = hostWeb.AddServiceEndpoint(typeof(RandomizzatoreServerRESTful.IService), new WebHttpBinding(), "");
+            ServiceEndpoint ep = hostWeb.AddServiceEndpoint(typeof(AudioLibraryServerRESTful.IService), new WebHttpBinding(), "");
             hostWeb.Description.Endpoints[1].Behaviors.Add(new WebHttpBehavior { HelpEnabled = true });
             ServiceDebugBehavior stp = hostWeb.Description.Behaviors.Find<ServiceDebugBehavior>();
             stp.HttpHelpPageEnabled = true;
@@ -28,7 +28,7 @@ namespace RandomizzatoreServerRESTful
             root = hostWeb.BaseAddresses[0].ToString();
             Console.WriteLine("Service Host started @" + hostWeb.BaseAddresses[0]);
 
-            var methods = typeof(RandomizzatoreServerRESTful.IService).GetMethods();
+            var methods = typeof(AudioLibraryServerRESTful.IService).GetMethods();
             IEnumerable<string> actions = methods.Where(
                 m => m.GetCustomAttributes(typeof(WebInvokeAttribute), true).Count() > 0)
                 .Select(m =>

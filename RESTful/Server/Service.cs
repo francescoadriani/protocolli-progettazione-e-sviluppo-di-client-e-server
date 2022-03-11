@@ -1,5 +1,4 @@
-﻿using RandomizzatoreClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
@@ -7,140 +6,254 @@ using System.IO;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Data.SQLite;
-using restservice.Discography;
+using AudioLibraryServerRESTful.Discography;
 using System.Data;
+using System.ServiceModel;
+using AudioLibraryServerRESTful;
+using Newtonsoft.Json;
 
-namespace RandomizzatoreServerRESTful
+namespace AudioLibraryServerRESTful
 {
     public class Service : IService
     {
-        Random rnd = new Random();
-        public RandomResult ReadRandom(String minString, String maxString)
-        {
-            double res = -1;
-            double minTemp = 0;
-            double maxTemp = 0;
-            if (double.TryParse(minString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out minTemp))
-                if (double.TryParse(maxString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out maxTemp))
-                    res = minTemp + rnd.NextDouble() * (maxTemp - minTemp);
-            return new RandomResult { Random = res, Max = maxTemp, Min = minTemp };
-        }
+        //Random rnd = new Random();
+        //public RandomResult ReadRandom(String minString, String maxString)
+        //{
+        //    double res = -1;
+        //    double minTemp = 0;
+        //    double maxTemp = 0;
+        //    if (double.TryParse(minString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out minTemp))
+        //        if (double.TryParse(maxString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out maxTemp))
+        //            res = minTemp + rnd.NextDouble() * (maxTemp - minTemp);
+        //    return new RandomResult { Random = res, Max = maxTemp, Min = minTemp };
+        //}
         
         public Track ReadTrackByID(String TrackID)
         {
-            int val = -1;
-            if (int.TryParse(TrackID, out val))
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE TrackID = " + TrackID);
+            foreach (DataRow row in dt.Rows)
             {
-                return ReadTrackByID(val);
-            }
-            return null;
-        }
-        public Track ReadTrackByID(int TrackID)
-        {
-            string cs = @"URI=file:.\chinook.db";
-            SQLiteConnection con = new SQLiteConnection(cs);
-            con.Open();
-            SQLiteCommand cmd = new SQLiteCommand(con);
-            
-            try
-            {
-                SQLiteDataAdapter db = new SQLiteDataAdapter("SELECT * FROM Tracks WHERE TrackID=" + TrackID, con);
-
-                // Create a dataset
-                DataSet ds = new DataSet();
-
-                // Fill dataset
-                db.Fill(ds);
-
-                // Create a datatable
-                DataTable dt = new DataTable("Names");
-                dt = ds.Tables[0];
-
-                // Close connection
-                con.Close();
-                
-                // Print table
-                foreach (DataRow row in dt.Rows)
-                {
-                    Track t = new Track()
-                    {
-                        Album = new Link<long>() { resource = (long)row["AlbumId"], href = Program.root + "albums/" + (long)row["AlbumId"] + "/" },
-                        Bytes = (long)row["Bytes"],
-                        Composer = (String)row["Composer"],
-                        Genre = new Link<long>() { resource = (long)row["GenreId"], href = Program.root + "genres/" + (long)row["GenreId"] + "/" },
-                        MediaType = new Link<long>() { resource = (long)row["MediaTypeId"], href = Program.root + "mediatypes/" + (long)row["MediaTypeId"] + "/" },
-                        Milliseconds = (long)row["Milliseconds"],
-                        Name = (String)row["Name"],
-                        TrackId = (long)row["TrackId"],
-                        UnitPrice = (decimal)row["UnitPrice"]
-                    };
-                    Console.WriteLine(string.Format("{0} {1}", row["TrackId"], row["Composer"]));
-                    return t;
-                }
-            }
-            catch (Exception ex)
-            {
+                Track t = SqLiteFacade.trackFromRow(row);
+                return t;
             }
             return null;
         }
 
-        public object READ()
+        [return: MessageParameter(Name = "tracks")]
+        public List<Track> ReadTracks()
         {
-            string cs = @"URI=file:.\chinook.db";
-
-            SQLiteConnection con = new SQLiteConnection(cs);
-            con.Open();
-
-            SQLiteCommand cmd = new SQLiteCommand(con);
-
-            cmd.CommandText = "SELECT * FROM tracks";
-            cmd.ExecuteNonQuery();
-
-            try
+            List<Track> tracksList = new List<Track>();
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks");
+            foreach (DataRow row in dt.Rows)
             {
-                return "nessuna risorsa richiesta";
+                Track t = SqLiteFacade.trackFromRow(row);
+                tracksList.Add(t);
             }
-            catch (Exception ex)
+            return tracksList;
+        }
+        [return: MessageParameter(Name = "albums")]
+        public List<Album> ReadAlbums()
+        {
+            List<Album> albumsList = new List<Album>();
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums");
+            foreach (DataRow row in dt.Rows)
             {
-                return null;
+                Album t = SqLiteFacade.albumFromRow(row);
+                DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE AlbumId=" + t.ID.resource);
+                //foreach (DataRow row2 in dt2.Rows)
+                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID + "/" });
+                albumsList.Add(t);
             }
+            return albumsList;
         }
 
-        public String ReadTutorialbyID(String Tutorialid)
+        [return: MessageParameter(Name = "album")]
+        public Album ReadAlbumByID(string AlbumID)
         {
-            int pid;
-            Int32.TryParse(Tutorialid, out pid);
-            return Tutorialid;
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums WHERE AlbumID = " + AlbumID);
+            foreach (DataRow row in dt.Rows)
+            {
+                Album t = SqLiteFacade.albumFromRow(row);
+                DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE AlbumId=" + t.ID.resource);
+                foreach (DataRow row2 in dt2.Rows)
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
+                return t;
+            }
+            return null;
         }
 
-        public void DeleteTutorial(String Tutorialid)
+        [return: MessageParameter(Name = "artists")]
+        public List<Artist> ReadArtists()
         {
-            int pid;
-            Int32.TryParse(Tutorialid, out pid);
-            //1st.RemoveAt(pid);
-        }
-        public void CreateTutorial(string par)
-        {
-            int pid;
-            Int32.TryParse(par, out pid);
-            //1st.RemoveAt(pid);
+            List<Artist> artistsList = new List<Artist>();
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Artists");
+            foreach (DataRow row in dt.Rows)
+            {
+                Artist t = SqLiteFacade.artistFromRow(row);
+                DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums WHERE ArtistId=" + t.ID.resource);
+                //foreach (DataRow row2 in dt2.Rows)
+                //    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID, href = Program.root + "albums/" + SqLiteFacade.albumFromRow(row2).ID + "/" });
+                artistsList.Add(t);
+            }
+            return artistsList;
         }
 
-        public Stream Submit(string fileName, Stream contents)
+        [return: MessageParameter(Name = "artist")]
+        public Artist ReadArtistByID(string ArtistID)
+        {
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Artists WHERE ArtistID = " + ArtistID);
+            foreach (DataRow row in dt.Rows)
+            {
+                Artist t = SqLiteFacade.artistFromRow(row);
+                DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums WHERE ArtistId=" + t.ID.resource);
+                foreach (DataRow row2 in dt2.Rows)
+                    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID.resource, href = Program.root + "albums/" + SqLiteFacade.albumFromRow(row2).ID.resource + "/" });
+                return (t);
+            }
+            return null;
+        }
+
+        [return: MessageParameter(Name = "genres")]
+        public List<Genre> ReadGenres()
+        {
+            List<Genre> genreList = new List<Genre>();
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM genres");
+            foreach (DataRow row in dt.Rows)
+            {
+                Genre t = SqLiteFacade.genreFromRow(row);
+                DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE GenreId=" + t.ID.resource);
+                //foreach (DataRow row2 in dt2.Rows)
+                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID + "/" });
+                genreList.Add(t);
+        }
+            return genreList;
+        }
+
+        [return: MessageParameter(Name = "genre")]
+        public Genre ReadGenreByID(string GenreID)
+        {
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Genres WHERE GenreId = " + GenreID);
+            foreach (DataRow row in dt.Rows)
+            {
+                Genre t = SqLiteFacade.genreFromRow(row);
+                DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE GenreId=" + t.ID.resource);
+                foreach (DataRow row2 in dt2.Rows)
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
+                return t;
+            }
+            return null;
+        }
+
+        [return: MessageParameter(Name = "media-types")]
+        public List<MediaType> ReadMediaTypes()
+        {
+            List<MediaType> mediaTypeList = new List<MediaType>();
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM media_types");
+            foreach (DataRow row in dt.Rows)
+            {
+                MediaType t = SqLiteFacade.mediaTypeFromRow(row);
+                DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE MediaTypeId=" + t.ID.resource);
+                //foreach (DataRow row2 in dt2.Rows)
+                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID + "/" });
+                mediaTypeList.Add(t);
+            }
+            return mediaTypeList;
+        }
+
+        [return: MessageParameter(Name = "media-type")]
+        public MediaType ReadMediaTypeByID(string MediaTypeID)
+        {
+            DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM media_types WHERE MediaTypeId=" + MediaTypeID);
+            foreach (DataRow row in dt.Rows)
+            {
+                MediaType t = SqLiteFacade.mediaTypeFromRow(row);
+                DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE MediaTypeId=" + t.ID.resource);
+                foreach (DataRow row2 in dt2.Rows)
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
+                return t;
+            }
+            return null;
+        }
+
+        public void DeleteTrackByID(string TrackID)
+        {
+            SqLiteFacade.getDatatableFromQuery("DELETE FROM tracks where TrackId=" + TrackID);
+        }
+
+        public Track AddTrack(Stream contents)
         {
             string input = new StreamReader(contents).ReadToEnd();
-            Console.WriteLine("In service, input = {0}", input);
+            Track t = JsonConvert.DeserializeObject<Track>(input);
+            SqLiteFacade.insertTrack(t);
+            return t;
+        }
 
-            string response = "{\n\t\"ok\": true\n}";
-            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";// "text/plain";
-            return new MemoryStream(Encoding.UTF8.GetBytes(response));
-        }
-        
-        public void UpdateTutorial(String Tutorialid)
+        public Track UpdateTrack(string TrackID, Stream contents)
         {
-            int pid;
-            Int32.TryParse(Tutorialid, out pid);
-            //1st.RemoveAt(pid);
+            string input = new StreamReader(contents).ReadToEnd();
+            Track t = JsonConvert.DeserializeObject<Track>(input);
+            SqLiteFacade.updateTrack(TrackID, t);
+            return t;
         }
+
+
+        //public object READ()
+        //{
+        //    string cs = @"URI=file:.\chinook.db";
+
+        //    SQLiteConnection con = new SQLiteConnection(cs);
+        //    con.Open();
+
+        //    SQLiteCommand cmd = new SQLiteCommand(con);
+
+        //    cmd.CommandText = "SELECT * FROM tracks";
+        //    cmd.ExecuteNonQuery();
+
+        //    try
+        //    {
+        //        return "nessuna risorsa richiesta";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        //public String ReadTutorialbyID(String Tutorialid)
+        //{
+        //    int pid;
+        //    Int32.TryParse(Tutorialid, out pid);
+        //    return Tutorialid;
+        //}
+
+        //public void DeleteTutorial(String Tutorialid)
+        //{
+        //    int pid;
+        //    Int32.TryParse(Tutorialid, out pid);
+        //    //1st.RemoveAt(pid);
+        //}
+        //public void CreateTutorial(string par)
+        //{
+        //    int pid;
+        //    Int32.TryParse(par, out pid);
+        //    //1st.RemoveAt(pid);
+        //}
+
+        //public Stream Submit(string fileName, Stream contents)
+        //{
+        //    string input = new StreamReader(contents).ReadToEnd();
+        //    Console.WriteLine("In service, input = {0}", input);
+
+        //    string response = "{\n\t\"ok\": true\n}";
+        //    WebOperationContext.Current.OutgoingResponse.ContentType = "application/json; charset=utf-8";// "text/plain";
+        //    return new MemoryStream(Encoding.UTF8.GetBytes(response));
+        //}
+
+        //public void UpdateTutorial(String Tutorialid)
+        //{
+        //    int pid;
+        //    Int32.TryParse(Tutorialid, out pid);
+        //    //1st.RemoveAt(pid);
+        //}
     }
 }
