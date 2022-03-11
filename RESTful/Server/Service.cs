@@ -18,18 +18,7 @@ namespace AudioLibraryServerRESTful
 {
     public class Service : IService
     {
-        //Random rnd = new Random();
-        //public RandomResult ReadRandom(String minString, String maxString)
-        //{
-        //    double res = -1;
-        //    double minTemp = 0;
-        //    double maxTemp = 0;
-        //    if (double.TryParse(minString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out minTemp))
-        //        if (double.TryParse(maxString, NumberStyles.Float, new CultureInfo("it-IT", false).NumberFormat, out maxTemp))
-        //            res = minTemp + rnd.NextDouble() * (maxTemp - minTemp);
-        //    return new RandomResult { Random = res, Max = maxTemp, Min = minTemp };
-        //}
-        
+        [return: MessageParameter(Name = "track")]
         public Track ReadTrackByID(String TrackID)
         {
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE TrackID = " + TrackID);
@@ -38,7 +27,7 @@ namespace AudioLibraryServerRESTful
                 Track t = SqLiteFacade.trackFromRow(row);
                 return t;
             }
-            return null;
+            throw new WebFaultException(HttpStatusCode.NotFound);
         }
 
         [return: MessageParameter(Name = "tracks")]
@@ -53,6 +42,7 @@ namespace AudioLibraryServerRESTful
             }
             return tracksList;
         }
+
         [return: MessageParameter(Name = "albums")]
         public List<Album> ReadAlbums()
         {
@@ -81,7 +71,7 @@ namespace AudioLibraryServerRESTful
                     t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
                 return t;
             }
-            return null;
+            throw new WebFaultException(HttpStatusCode.NotFound);
         }
 
         [return: MessageParameter(Name = "artists")]
@@ -112,7 +102,7 @@ namespace AudioLibraryServerRESTful
                     t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID.resource, href = Program.root + "albums/" + SqLiteFacade.albumFromRow(row2).ID.resource + "/" });
                 return (t);
             }
-            return null;
+            throw new WebFaultException(HttpStatusCode.NotFound);
         }
 
         [return: MessageParameter(Name = "genres")]
@@ -143,7 +133,7 @@ namespace AudioLibraryServerRESTful
                     t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
                 return t;
             }
-            return null;
+            throw new WebFaultException(HttpStatusCode.NotFound);
         }
 
         [return: MessageParameter(Name = "media-types")]
@@ -174,7 +164,7 @@ namespace AudioLibraryServerRESTful
                     t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
                 return t;
             }
-            return null;
+            throw new WebFaultException(HttpStatusCode.NotFound);
         }
 
         public long DeleteTrackByID(string TrackID)
