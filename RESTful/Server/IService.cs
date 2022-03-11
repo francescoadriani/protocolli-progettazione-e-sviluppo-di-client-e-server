@@ -59,7 +59,7 @@ namespace AudioLibraryServerRESTful
             UriTemplate = "/tracks/{TrackID}",
             BodyStyle = WebMessageBodyStyle.Bare)]
         [System.ComponentModel.Description("Cancella una traccia")]
-        void DeleteTrackByID(String TrackID);
+        long DeleteTrackByID(String TrackID);
 
         [OperationContract]
         [Description("Crea una traccia")]

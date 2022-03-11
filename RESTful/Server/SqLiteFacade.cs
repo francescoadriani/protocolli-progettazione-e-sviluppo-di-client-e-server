@@ -12,24 +12,26 @@ namespace AudioLibraryServerRESTful
 {
     public class SqLiteFacade
     {
-        public static void updateTrack(String trackId, Track track)
+        public static long updateTrack(String trackId, Track track)
         {
-            getDatatableFromQuery("UPDATE tracks " +
-                "SET Name = '" + track.Name +"',"+
-                "AlbumId = " + track.Album.resource + ", "+
-                "MediaTypeId = " + track.MediaType.resource + ", "+
-                "GenreId = "+ track.Genre.resource +", "+
-                "Composer = '" + track.Composer + "', "+
-                "Milliseconds = " + track.Milliseconds + ", "+
-                "Bytes = " + track.Bytes + ", "+
+            long id = SqLiteFacade.executeQueryAndGetLastId("UPDATE tracks " +
+                "SET Name = '" + track.Name + "'," +
+                "AlbumId = " + track.Album.resource + ", " +
+                "MediaTypeId = " + track.MediaType.resource + ", " +
+                "GenreId = " + track.Genre.resource + ", " +
+                "Composer = '" + track.Composer + "', " +
+                "Milliseconds = " + track.Milliseconds + ", " +
+                "Bytes = " + track.Bytes + ", " +
                 "UnitPrice = " + track.UnitPrice + " " +
                 "WHERE TrackId = " + trackId);
+            return id;
         }
-        public static void insertTrack(Track track)
+        public static long insertTrack(Track track)
         {
-            getDatatableFromQuery("INSERT INTO tracks" +
+            long res = executeQueryAndGetLastId("INSERT INTO tracks" +
                 "(Name, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice)" +
-                "VALUES('" + track.Name + "', " + track.Album.resource + ",  + " + track.MediaType.resource + ", " + track.Genre.resource + ", '" + track.Composer + "',  + " + track.Milliseconds + ", " + track.Bytes + ", " + track.UnitPrice + ")");
+                "VALUES('" + track.Name + "', " + track.Album.resource + ",  " + track.MediaType.resource + ", " + track.Genre.resource + ", '" + track.Composer + "',  " + track.Milliseconds + ", " + track.Bytes + ", " + track.UnitPrice.ToString("0.00").Replace(",",".") + ")");
+            return res;
         }
         public static Track trackFromRow(DataRow row)
         {
@@ -84,6 +86,28 @@ namespace AudioLibraryServerRESTful
                 Title = (row["Title"] == DBNull.Value) ? string.Empty : row["Title"].ToString()
             };
             return a;
+        }
+        public static long executeQueryAndGetLastId(String s)
+        {
+            long ret = 0;
+            string cs = @"URI=file:.\chinook.db";
+            System.Data.SQLite.SQLiteConnection con = new SQLiteConnection(cs);
+            con.Open();
+            SQLiteCommand cmd = new SQLiteCommand(con);
+            cmd.CommandText = s;
+            try
+            {
+                ret = cmd.ExecuteNonQuery();
+                cmd = new SQLiteCommand(con);
+                cmd.CommandText = @"select last_insert_rowid()";
+                ret = (long)cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                ret = -1;
+            }
+            con.Close();
+            return ret;
         }
         public static DataTable getDatatableFromQuery(String s)
         {

@@ -11,6 +11,8 @@ using System.Data;
 using System.ServiceModel;
 using AudioLibraryServerRESTful;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Net;
 
 namespace AudioLibraryServerRESTful
 {
@@ -175,24 +177,66 @@ namespace AudioLibraryServerRESTful
             return null;
         }
 
-        public void DeleteTrackByID(string TrackID)
-        {
-            SqLiteFacade.getDatatableFromQuery("DELETE FROM tracks where TrackId=" + TrackID);
+        public long DeleteTrackByID(string TrackID)
+        { 
+            long res = SqLiteFacade.executeQueryAndGetLastId("DELETE FROM tracks where TrackId=" + TrackID);
+            if (res<0)
+                throw new WebFaultException(HttpStatusCode.NotModified);
+            return res;
         }
 
+        //String json = JsonConvert.SerializeObject(new RandomResult() { ReadRandomResult = 9.45 });
         public Track AddTrack(Stream contents)
         {
+            HttpResponseMessage response = null;
             string input = new StreamReader(contents).ReadToEnd();
-            Track t = JsonConvert.DeserializeObject<Track>(input);
-            SqLiteFacade.insertTrack(t);
+            Track t = null;
+            try
+            {
+                t = JsonConvert.DeserializeObject<Track>(input);
+                long id = SqLiteFacade.insertTrack(t);
+                if (id > 0)
+                {
+                    t.ID = new Link<long>() { href = Program.root + "tracks/" + id + "/", resource = id };
+                    response = new HttpResponseMessage(HttpStatusCode.OK);
+                    response.Content = new StringContent(JsonConvert.SerializeObject(t));
+                }
+                else
+                {
+                    throw new WebFaultException(HttpStatusCode.BadRequest);
+                }
+            }
+            catch
+            {
+                throw new WebFaultException(HttpStatusCode.BadRequest);
+            }
             return t;
         }
 
         public Track UpdateTrack(string TrackID, Stream contents)
         {
+            HttpResponseMessage response = null;
             string input = new StreamReader(contents).ReadToEnd();
-            Track t = JsonConvert.DeserializeObject<Track>(input);
-            SqLiteFacade.updateTrack(TrackID, t);
+            Track t = null;
+            try
+            {
+                t = JsonConvert.DeserializeObject<Track>(input);
+                long id = SqLiteFacade.updateTrack(TrackID, t);
+                if (id > 0)
+                {
+                    t.ID = new Link<long>() { href = Program.root + "tracks/" + id + "/", resource = id };
+                    response = new HttpResponseMessage(HttpStatusCode.OK);
+                    response.Content = new StringContent(JsonConvert.SerializeObject(t));
+                }
+                else
+                {
+                    throw new WebFaultException(HttpStatusCode.NotFound);
+                }
+            }
+            catch
+            {
+                throw new WebFaultException(HttpStatusCode.BadRequest);
+            }
             return t;
         }
 
