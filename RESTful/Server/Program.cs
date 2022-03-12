@@ -36,6 +36,8 @@ namespace AudioLibraryServerRESTful
             baseAddress = hostWeb.BaseAddresses[0].AbsoluteUri;
             port = hostWeb.BaseAddresses[0].Port;
 
+            Console.WriteLine("LISTA COMANDI + URI DISPONIBILI:");
+            Console.WriteLine("(GET)   \t" + hostWeb.BaseAddresses[0] + "help");
             var methods = typeof(AudioLibraryServerRESTful.IService).GetMethods();
             IEnumerable<string> actions = methods.Where(
                 m => m.GetCustomAttributes(typeof(WebInvokeAttribute), true).Count() > 0)
