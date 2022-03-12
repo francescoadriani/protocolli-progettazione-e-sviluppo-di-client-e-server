@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.ServiceModel.Web;
@@ -11,22 +13,28 @@ namespace AudioLibraryServerRESTful
 {
     class Program
     {
-        public static string root = "";
+        public static string baseAddress = "";
+        public static int port = 80;
         static void Main(string[] args)
         {
             WebServiceHost hostWeb = new WebServiceHost(typeof(AudioLibraryServerRESTful.Service));
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    ServiceEndpoint ep = hostWeb.AddServiceEndpoint(typeof(AudioLibraryServerRESTful.IService), new WebHttpBinding(), ip.ToString());
+                    ep.EndpointBehaviors.Add(new WebHttpBehavior { HelpEnabled = true });
+                    ServiceDebugBehavior stp = hostWeb.Description.Behaviors.Find<ServiceDebugBehavior>();
+                    stp.HttpHelpPageEnabled = true;
 
-            //hostWeb.AddServiceEndpoint(typeof(ICustomerCollection), new WebHttpBinding(), "");
-            //hostWeb.Description.Endpoints[0].Behaviors.Add(new WebHttpBehavior { EnableHelp = true });
-
-            ServiceEndpoint ep = hostWeb.AddServiceEndpoint(typeof(AudioLibraryServerRESTful.IService), new WebHttpBinding(), "");
-            hostWeb.Description.Endpoints[1].Behaviors.Add(new WebHttpBehavior { HelpEnabled = true });
-            ServiceDebugBehavior stp = hostWeb.Description.Behaviors.Find<ServiceDebugBehavior>();
-            stp.HttpHelpPageEnabled = true;
+                    Console.WriteLine("Service Host started @" + ip.ToString());
+                }
+            }
             hostWeb.Open();
 
-            root = hostWeb.BaseAddresses[0].ToString();
-            Console.WriteLine("Service Host started @" + hostWeb.BaseAddresses[0]);
+            baseAddress = hostWeb.BaseAddresses[0].AbsoluteUri;
+            port = hostWeb.BaseAddresses[0].Port;
 
             var methods = typeof(AudioLibraryServerRESTful.IService).GetMethods();
             IEnumerable<string> actions = methods.Where(

@@ -1,7 +1,4 @@
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\chinook.db
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\restservice.exe.config
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\restservice.exe
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\restservice.pdb
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\System.Data.SQLite.dll
@@ -11,5 +8,8 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\Syst
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csprojAssemblyReference.cache
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csproj.CoreCompileInputs.cache
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csproj.CopyComplete
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\restservice.exe
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\restservice.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\AudioLibraryServerRESTful.exe.config
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\AudioLibraryServerRESTful.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\AudioLibraryServerRESTful.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.exe
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.pdb
