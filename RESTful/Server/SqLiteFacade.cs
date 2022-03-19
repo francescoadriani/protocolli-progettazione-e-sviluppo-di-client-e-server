@@ -37,14 +37,14 @@ namespace AudioLibraryServerRESTful
         {
             Track t = new Track()
             {
-                Album = new Link<long>() { resource = (long)row["AlbumId"], href = Program.baseAddress + "albums/" + (long)row["AlbumId"] + "/" },
+                Album = new Link<long>() { resource = (long)row["AlbumId"], href = Program.baseAddress + "albums/" + (long)row["AlbumId"] },
                 Bytes = (long)row["Bytes"],
                 Composer = (row["Composer"] == DBNull.Value) ? string.Empty : row["Composer"].ToString(),
-                Genre = new Link<long>() { resource = (long)row["GenreId"], href = Program.baseAddress + "genres/" + (long)row["GenreId"] + "/" },
-                MediaType = new Link<long>() { resource = (long)row["MediaTypeId"], href = Program.baseAddress + "mediatypes/" + (long)row["MediaTypeId"] + "/" },
+                Genre = new Link<long>() { resource = (long)row["GenreId"], href = Program.baseAddress + "genres/" + (long)row["GenreId"] },
+                MediaType = new Link<long>() { resource = (long)row["MediaTypeId"], href = Program.baseAddress + "media-types/" + (long)row["MediaTypeId"] },
                 Milliseconds = (long)row["Milliseconds"],
                 Name = (row["Name"] == DBNull.Value) ? string.Empty : row["Name"].ToString(),
-                ID = new Link<long>() { resource = (long)row["TrackId"], href = Program.baseAddress + "tracks/" + (long)row["TrackId"] + "/" },
+                ID = new Link<long>() { resource = (long)row["TrackId"], href = Program.baseAddress + "tracks/" + (long)row["TrackId"] },
                 UnitPrice = (decimal)row["UnitPrice"]
             };
             return t;
@@ -53,7 +53,7 @@ namespace AudioLibraryServerRESTful
         {
             MediaType a = new MediaType()
             {
-                ID = new Link<long>() { resource = (long)row["MediaTypeId"], href = Program.baseAddress + "media-types/" + (long)row["MediaTypeId"] + "/" },//(long)row["MediaTypeId"],
+                ID = new Link<long>() { resource = (long)row["MediaTypeId"], href = Program.baseAddress + "media-types/" + (long)row["MediaTypeId"] },//(long)row["MediaTypeId"],
                 Name = (row["Name"] == DBNull.Value) ? string.Empty : row["Name"].ToString()
             };
             return a;
@@ -62,7 +62,7 @@ namespace AudioLibraryServerRESTful
         {
             Genre a = new Genre()
             {
-                ID = new Link<long>() { resource = (long)row["GenreId"], href = Program.baseAddress + "genres/" + (long)row["GenreId"] + "/" },//(long)row["GenreId"],
+                ID = new Link<long>() { resource = (long)row["GenreId"], href = Program.baseAddress + "genres/" + (long)row["GenreId"] },//(long)row["GenreId"],
                 Name = (row["Name"] == DBNull.Value) ? string.Empty : row["Name"].ToString()
             };
             return a;
@@ -71,7 +71,7 @@ namespace AudioLibraryServerRESTful
         {
             Artist a = new Artist()
             {
-                ID = new Link<long>() { resource = (long)row["ArtistId"], href = Program.baseAddress + "artists/" + (long)row["ArtistId"] + "/" },//(long)row["ArtistId"],
+                ID = new Link<long>() { resource = (long)row["ArtistId"], href = Program.baseAddress + "artists/" + (long)row["ArtistId"] },//(long)row["ArtistId"],
                 Name = (row["Name"] == DBNull.Value) ? string.Empty : row["Name"].ToString()
             };
             return a;
@@ -81,8 +81,8 @@ namespace AudioLibraryServerRESTful
         {
             Album a = new Album()
             {
-                Artist = new Link<long>() { resource = (long)row["ArtistId"], href = Program.baseAddress + "artist/" + (long)row["ArtistId"] + "/" },
-                ID = new Link<long>() { resource = (long)row["AlbumId"], href = Program.baseAddress + "albums/" + (long)row["AlbumId"] + "/" },//(long)row["AlbumId"],
+                Artist = new Link<long>() { resource = (long)row["ArtistId"], href = Program.baseAddress + "artist/" + (long)row["ArtistId"] },
+                ID = new Link<long>() { resource = (long)row["AlbumId"], href = Program.baseAddress + "albums/" + (long)row["AlbumId"] },//(long)row["AlbumId"],
                 Title = (row["Title"] == DBNull.Value) ? string.Empty : row["Title"].ToString()
             };
             return a;

@@ -5,7 +5,6 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\Syst
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\System.Data.SQLite.xml
-C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csprojAssemblyReference.cache
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csproj.CoreCompileInputs.cache
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csproj.CopyComplete
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\AudioLibraryServerRESTful.exe.config
@@ -13,3 +12,4 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\Audi
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\AudioLibraryServerRESTful.pdb
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.exe
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csproj.AssemblyReference.cache

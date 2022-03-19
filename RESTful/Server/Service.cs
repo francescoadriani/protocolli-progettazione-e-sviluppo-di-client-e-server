@@ -61,7 +61,7 @@ namespace AudioLibraryServerRESTful
                 Album t = SqLiteFacade.albumFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE AlbumId=" + t.ID.resource);
                 //foreach (DataRow row2 in dt2.Rows)
-                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID + "/" });
+                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).id });
                 albumsList.Add(t);
             }
             return albumsList;
@@ -76,7 +76,7 @@ namespace AudioLibraryServerRESTful
                 Album t = SqLiteFacade.albumFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE AlbumId=" + t.ID.resource);
                 foreach (DataRow row2 in dt2.Rows)
-                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource });
                 return t;
             }
             throw new WebFaultException(HttpStatusCode.NotFound);
@@ -92,7 +92,7 @@ namespace AudioLibraryServerRESTful
                 Artist t = SqLiteFacade.artistFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums WHERE ArtistId=" + t.ID.resource);
                 //foreach (DataRow row2 in dt2.Rows)
-                //    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID, href = Program.root + "albums/" + SqLiteFacade.albumFromRow(row2).ID + "/" });
+                //    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID, href = Program.root + "albums/" + SqLiteFacade.albumFromRow(row2).id });
                 artistsList.Add(t);
             }
             return artistsList;
@@ -107,7 +107,7 @@ namespace AudioLibraryServerRESTful
                 Artist t = SqLiteFacade.artistFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums WHERE ArtistId=" + t.ID.resource);
                 foreach (DataRow row2 in dt2.Rows)
-                    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID.resource, href = Program.baseAddress + "albums/" + SqLiteFacade.albumFromRow(row2).ID.resource + "/" });
+                    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID.resource, href = Program.baseAddress + "albums/" + SqLiteFacade.albumFromRow(row2).ID.resource });
                 return (t);
             }
             throw new WebFaultException(HttpStatusCode.NotFound);
@@ -123,7 +123,7 @@ namespace AudioLibraryServerRESTful
                 Genre t = SqLiteFacade.genreFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE GenreId=" + t.ID.resource);
                 //foreach (DataRow row2 in dt2.Rows)
-                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID + "/" });
+                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).id });
                 genreList.Add(t);
         }
             return genreList;
@@ -138,7 +138,7 @@ namespace AudioLibraryServerRESTful
                 Genre t = SqLiteFacade.genreFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE GenreId=" + t.ID.resource);
                 foreach (DataRow row2 in dt2.Rows)
-                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource });
                 return t;
             }
             throw new WebFaultException(HttpStatusCode.NotFound);
@@ -154,7 +154,7 @@ namespace AudioLibraryServerRESTful
                 MediaType t = SqLiteFacade.mediaTypeFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE MediaTypeId=" + t.ID.resource);
                 //foreach (DataRow row2 in dt2.Rows)
-                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).ID + "/" });
+                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).id });
                 mediaTypeList.Add(t);
             }
             return mediaTypeList;
@@ -169,7 +169,7 @@ namespace AudioLibraryServerRESTful
                 MediaType t = SqLiteFacade.mediaTypeFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE MediaTypeId=" + t.ID.resource);
                 foreach (DataRow row2 in dt2.Rows)
-                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource + "/" });
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource });
                 return t;
             }
             throw new WebFaultException(HttpStatusCode.NotFound);
@@ -195,7 +195,7 @@ namespace AudioLibraryServerRESTful
                 long id = SqLiteFacade.insertTrack(t);
                 if (id > 0)
                 {
-                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + id + "/", resource = id };
+                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + id, resource = id };
                     response = new HttpResponseMessage(HttpStatusCode.OK);
                     response.Content = new StringContent(JsonConvert.SerializeObject(t));
                 }
@@ -222,7 +222,7 @@ namespace AudioLibraryServerRESTful
                 long id = SqLiteFacade.updateTrack(TrackID, t);
                 if (id > 0)
                 {
-                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + id + "/", resource = id };
+                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + id, resource = id };
                     response = new HttpResponseMessage(HttpStatusCode.OK);
                     response.Content = new StringContent(JsonConvert.SerializeObject(t));
                 }
