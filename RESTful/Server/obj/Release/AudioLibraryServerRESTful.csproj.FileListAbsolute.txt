@@ -12,3 +12,4 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Release\Au
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Release\AudioLibraryServerRESTful.csproj.CopyComplete
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Release\AudioLibraryServerRESTful.exe
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Release\AudioLibraryServerRESTful.pdb
+C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Release\AudioLibraryServerRESTful.csproj.AssemblyReference.cache

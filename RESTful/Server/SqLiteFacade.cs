@@ -81,7 +81,7 @@ namespace AudioLibraryServerRESTful
         {
             Album a = new Album()
             {
-                Artist = new Link<long>() { resource = (long)row["ArtistId"], href = Program.baseAddress + "artist/" + (long)row["ArtistId"] },
+                Artist = new Link<long>() { resource = (long)row["ArtistId"], href = Program.baseAddress + "artists/" + (long)row["ArtistId"] },
                 ID = new Link<long>() { resource = (long)row["AlbumId"], href = Program.baseAddress + "albums/" + (long)row["AlbumId"] },//(long)row["AlbumId"],
                 Title = (row["Title"] == DBNull.Value) ? string.Empty : row["Title"].ToString()
             };

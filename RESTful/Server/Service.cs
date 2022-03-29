@@ -60,8 +60,8 @@ namespace AudioLibraryServerRESTful
             {
                 Album t = SqLiteFacade.albumFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE AlbumId=" + t.ID.resource);
-                //foreach (DataRow row2 in dt2.Rows)
-                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).id });
+                foreach (DataRow row2 in dt2.Rows)
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource });
                 albumsList.Add(t);
             }
             return albumsList;
@@ -91,8 +91,8 @@ namespace AudioLibraryServerRESTful
             {
                 Artist t = SqLiteFacade.artistFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums WHERE ArtistId=" + t.ID.resource);
-                //foreach (DataRow row2 in dt2.Rows)
-                //    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID, href = Program.root + "albums/" + SqLiteFacade.albumFromRow(row2).id });
+                foreach (DataRow row2 in dt2.Rows)
+                    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID.resource, href = Program.root + "albums/" + SqLiteFacade.albumFromRow(row2).ID.resource });
                 artistsList.Add(t);
             }
             return artistsList;
@@ -122,8 +122,8 @@ namespace AudioLibraryServerRESTful
             {
                 Genre t = SqLiteFacade.genreFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE GenreId=" + t.ID.resource);
-                //foreach (DataRow row2 in dt2.Rows)
-                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).id });
+                foreach (DataRow row2 in dt2.Rows)
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource });
                 genreList.Add(t);
         }
             return genreList;
