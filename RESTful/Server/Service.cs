@@ -92,7 +92,7 @@ namespace AudioLibraryServerRESTful
                 Artist t = SqLiteFacade.artistFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums WHERE ArtistId=" + t.ID.resource);
                 foreach (DataRow row2 in dt2.Rows)
-                    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID.resource, href = Program.root + "albums/" + SqLiteFacade.albumFromRow(row2).ID.resource });
+                    t.AlbumsList.Add(new Link<long>() { resource = SqLiteFacade.albumFromRow(row2).ID.resource, href = Program.baseAddress + "albums/" + SqLiteFacade.albumFromRow(row2).ID.resource });
                 artistsList.Add(t);
             }
             return artistsList;
@@ -153,8 +153,8 @@ namespace AudioLibraryServerRESTful
             {
                 MediaType t = SqLiteFacade.mediaTypeFromRow(row);
                 DataTable dt2 = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks WHERE MediaTypeId=" + t.ID.resource);
-                //foreach (DataRow row2 in dt2.Rows)
-                //    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID, href = Program.root + "tracks/" + SqLiteFacade.trackFromRow(row2).id });
+                foreach (DataRow row2 in dt2.Rows)
+                    t.TracksList.Add(new Link<long>() { resource = SqLiteFacade.trackFromRow(row2).ID.resource, href = Program.baseAddress + "tracks/" + SqLiteFacade.trackFromRow(row2).ID.resource});
                 mediaTypeList.Add(t);
             }
             return mediaTypeList;
@@ -176,7 +176,8 @@ namespace AudioLibraryServerRESTful
         }
 
         public long DeleteTrackByID(string TrackID)
-        { 
+        {
+            Console.WriteLine("Cancellata traccia: " + TrackID);
             long res = SqLiteFacade.executeQueryAndGetLastId("DELETE FROM tracks where TrackId=" + TrackID);
             if (res<0)
                 throw new WebFaultException(HttpStatusCode.NotModified);
@@ -188,6 +189,7 @@ namespace AudioLibraryServerRESTful
         {
             HttpResponseMessage response = null;
             string input = new StreamReader(contents).ReadToEnd();
+            Console.WriteLine("Aggiunta traccia: " + input);
             Track t = null;
             try
             {
@@ -211,10 +213,39 @@ namespace AudioLibraryServerRESTful
             return t;
         }
 
+        public Track UpdateTrackWithoutExplicitID(Stream contents)
+        {
+            HttpResponseMessage response = null;
+            string input = new StreamReader(contents).ReadToEnd();
+            Console.WriteLine("Aggiornata traccia senza id esplicito: " + input);
+            Track t = null;
+            try
+            {
+                t = JsonConvert.DeserializeObject<Track>(input);
+                long id = SqLiteFacade.updateTrack(t.ID.resource.ToString("0"), t);
+                if (id > 0)
+                {
+                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + id, resource = id };
+                    response = new HttpResponseMessage(HttpStatusCode.OK);
+                    response.Content = new StringContent(JsonConvert.SerializeObject(t));
+                }
+                else
+                {
+                    throw new WebFaultException(HttpStatusCode.NotFound);
+                }
+            }
+            catch
+            {
+                throw new WebFaultException(HttpStatusCode.BadRequest);
+            }
+            return t;
+        }
+
         public Track UpdateTrack(string TrackID, Stream contents)
         {
             HttpResponseMessage response = null;
             string input = new StreamReader(contents).ReadToEnd();
+            Console.WriteLine("Aggiornata traccia " + TrackID + ": " + input);
             Track t = null;
             try
             {

@@ -81,6 +81,17 @@ namespace AudioLibraryServerRESTful
 
 
 
+        [OperationContract]
+        [Description("Modifica una traccia senza id esplicito")]
+        [WebInvoke(Method = "PUT",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "/tracks/")]
+        Track UpdateTrackWithoutExplicitID(Stream contents);
+
+
+
 
 
 
