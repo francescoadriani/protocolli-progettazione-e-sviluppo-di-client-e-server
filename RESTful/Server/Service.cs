@@ -22,6 +22,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "track")]
         public Track ReadTrackByID(String TrackID)
         {
+            Console.WriteLine("Richiesta traccia: " + TrackID);
             String root = OperationContext.Current.Host.BaseAddresses[0].AbsoluteUri;
             RemoteEndpointMessageProperty clientEndpoint =
              OperationContext.Current.IncomingMessageProperties[
@@ -41,6 +42,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "tracks")]
         public List<Track> ReadTracks()
         {
+            Console.WriteLine("Richieste tracce");
             List<Track> tracksList = new List<Track>();
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Tracks");
             foreach (DataRow row in dt.Rows)
@@ -54,6 +56,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "albums")]
         public List<Album> ReadAlbums()
         {
+            Console.WriteLine("Richiesti album");
             List<Album> albumsList = new List<Album>();
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums");
             foreach (DataRow row in dt.Rows)
@@ -70,6 +73,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "album")]
         public Album ReadAlbumByID(string AlbumID)
         {
+            Console.WriteLine("Richiesto album: " + AlbumID);
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Albums WHERE AlbumID = " + AlbumID);
             foreach (DataRow row in dt.Rows)
             {
@@ -85,6 +89,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "artists")]
         public List<Artist> ReadArtists()
         {
+            Console.WriteLine("Richiesti artisti");
             List<Artist> artistsList = new List<Artist>();
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Artists");
             foreach (DataRow row in dt.Rows)
@@ -101,6 +106,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "artist")]
         public Artist ReadArtistByID(string ArtistID)
         {
+            Console.WriteLine("Richiesto artista: " + ArtistID);
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Artists WHERE ArtistID = " + ArtistID);
             foreach (DataRow row in dt.Rows)
             {
@@ -116,6 +122,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "genres")]
         public List<Genre> ReadGenres()
         {
+            Console.WriteLine("Richiesti generi");
             List<Genre> genreList = new List<Genre>();
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM genres");
             foreach (DataRow row in dt.Rows)
@@ -132,6 +139,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "genre")]
         public Genre ReadGenreByID(string GenreID)
         {
+            Console.WriteLine("Richiesto genere: " + GenreID);
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM Genres WHERE GenreId = " + GenreID);
             foreach (DataRow row in dt.Rows)
             {
@@ -147,6 +155,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "media-types")]
         public List<MediaType> ReadMediaTypes()
         {
+            Console.WriteLine("Richiesti mediatype");
             List<MediaType> mediaTypeList = new List<MediaType>();
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM media_types");
             foreach (DataRow row in dt.Rows)
@@ -163,6 +172,7 @@ namespace AudioLibraryServerRESTful
         [return: MessageParameter(Name = "media-type")]
         public MediaType ReadMediaTypeByID(string MediaTypeID)
         {
+            Console.WriteLine("Richiesto mediatype: " + MediaTypeID);
             DataTable dt = SqLiteFacade.getDatatableFromQuery("SELECT * FROM media_types WHERE MediaTypeId=" + MediaTypeID);
             foreach (DataRow row in dt.Rows)
             {
@@ -223,9 +233,9 @@ namespace AudioLibraryServerRESTful
             {
                 t = JsonConvert.DeserializeObject<Track>(input);
                 long id = SqLiteFacade.updateTrack(t.ID.resource.ToString("0"), t);
-                if (id > 0)
+                if (id == 0)
                 {
-                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + id, resource = id };
+                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + t.ID.resource, resource = t.ID.resource };
                     response = new HttpResponseMessage(HttpStatusCode.OK);
                     response.Content = new StringContent(JsonConvert.SerializeObject(t));
                 }
@@ -250,10 +260,11 @@ namespace AudioLibraryServerRESTful
             try
             {
                 t = JsonConvert.DeserializeObject<Track>(input);
+                t.ID.resource = int.Parse(TrackID);
                 long id = SqLiteFacade.updateTrack(TrackID, t);
-                if (id > 0)
+                if (id == 0)
                 {
-                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + id, resource = id };
+                    t.ID = new Link<long>() { href = Program.baseAddress + "tracks/" + TrackID, resource = int.Parse(TrackID) };
                     response = new HttpResponseMessage(HttpStatusCode.OK);
                     response.Content = new StringContent(JsonConvert.SerializeObject(t));
                 }

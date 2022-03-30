@@ -22,7 +22,7 @@ namespace AudioLibraryServerRESTful
                 "Composer = '" + track.Composer + "', " +
                 "Milliseconds = " + track.Milliseconds + ", " +
                 "Bytes = " + track.Bytes + ", " +
-                "UnitPrice = " + track.UnitPrice + " " +
+                "UnitPrice = REPLACE('" + track.UnitPrice + "', ',', '.') " +
                 "WHERE TrackId = " + trackId);
             return id;
         }
