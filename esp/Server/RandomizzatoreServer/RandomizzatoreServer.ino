@@ -1,6 +1,6 @@
-#include <WiFi.h> // #include <ESP8266WiFi.h> //
+#include <ESP8266WiFi.h> //#include <WiFi.h> //
 #define LED_BUILTIN 2
-const char* ssid = "esp32_AP";
+const char* ssid = "esp_RANDOM_SERVER";
 const char* password = "12345678";
 WiFiServer serverTcp(10103);
 void setup() {
@@ -28,20 +28,26 @@ void setup() {
   digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
 }
 void loop() {
+  // check if there are any new clients
+  digitalWrite(LED_BUILTIN, LOW);   // turn the LED on (HIGH is the voltage level)
   WiFiClient clientTcp = serverTcp.available();
   digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
   if (!clientTcp) {
     return;
   }
   Serial.println("New client connected");
-  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  //digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
   double min = 0;
   double max = 1.0;
   while (true)
   {
     String answer = "";
+    int timeOutCounter=0;
     while (!clientTcp.available()) {
       delay(1);
+      timeOutCounter++;
+      if (timeOutCounter==2000)
+        return;
     }
     String message = clientTcp.readStringUntil('\r');
     digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
