@@ -18,3 +18,13 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-c
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\UDP\Protocollo RANDOMIZZATORE c# tcp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.csproj.CoreCompileInputs.cache
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\UDP\Protocollo RANDOMIZZATORE c# tcp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.exe
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli-progettazione-e-sviluppo-di-client-e-server\UDP\Protocollo RANDOMIZZATORE c# tcp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.pdb
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\bin\Debug\RandomizzatoreClient.exe.config
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\bin\Debug\RandomizzatoreClient.exe
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\bin\Debug\RandomizzatoreClient.pdb
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.csprojAssemblyReference.cache
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.FrmMain.resources
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.Properties.Resources.resources
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.csproj.GenerateResource.cache
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.csproj.CoreCompileInputs.cache
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.exe
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\c# udp multithread\Client\RandomizzatoreClient\obj\Debug\RandomizzatoreClient.pdb

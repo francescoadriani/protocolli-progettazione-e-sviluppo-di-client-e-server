@@ -47,7 +47,7 @@ namespace RandomizzatoreClient
             byte[] bytes = new byte[1024];
 
             IPAddress ipAddress = new IPAddress(new byte[4] { 127, 0, 0, 1 });
-            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 10144);
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 10108);
             client = new Socket(ipAddress.AddressFamily,
                 SocketType.Dgram, ProtocolType.Udp);
 
@@ -56,7 +56,7 @@ namespace RandomizzatoreClient
                 client.SendTo(Encoding.ASCII.GetBytes("GET[" + min.ToString("N", new CultureInfo("it-IT", false).NumberFormat) 
                     + ";" + max.ToString("N", new CultureInfo("it-IT", false).NumberFormat) + "]"), remoteEP);
                 int bytesRec = client.Receive(bytes);
-                String rnd = Encoding.ASCII.GetString(bytes, 0, bytesRec).Replace("\n","").Replace("\r", "");
+                String rnd = Encoding.ASCII.GetString(bytes, 0, bytesRec).Replace("\n", "").Replace("\r", "").Replace(".", ",");
                 num = double.Parse(rnd, new CultureInfo("it-IT", false).NumberFormat);
             }
             catch (Exception ex) { }

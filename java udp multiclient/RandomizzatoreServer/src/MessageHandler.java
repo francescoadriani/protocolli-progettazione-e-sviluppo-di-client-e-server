@@ -38,8 +38,8 @@ public class MessageHandler
                     String[] arrOfStr = message.split("\\[");
                     String param = arrOfStr[1];
                     try{
-                        min = Double.parseDouble(param.split("\\;")[0]);
-                        max = Double.parseDouble(param.split("\\;")[1].substring(0, param.split(";")[1].indexOf("]")));
+                        min = Double.parseDouble(param.split("\\;")[0].replace(",", "."));
+                        max = Double.parseDouble(param.split("\\;")[1].substring(0, param.split(";")[1].indexOf("]")).replace(",", "."));
                         if (MessageHandler.ipStringState.containsKey(address))
                         {
                             MessageHandler.ipStringState.get(address).Min = min;
