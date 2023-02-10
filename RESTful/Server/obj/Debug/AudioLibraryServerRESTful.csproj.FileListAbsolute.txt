@@ -13,3 +13,18 @@ C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\bin\Debug\Audi
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.exe
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.pdb
 C:\Users\Rice Cipriani\Documents\GitHub\protocolli\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csprojAssemblyReference.cache
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\chinook.db
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\AudioLibraryServerRESTful.exe.config
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\AudioLibraryServerRESTful.exe
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\AudioLibraryServerRESTful.pdb
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\DocumentFormat.OpenXml.dll
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\Newtonsoft.Json.dll
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\System.Data.SQLite.dll
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\DocumentFormat.OpenXml.xml
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\Newtonsoft.Json.xml
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\bin\Debug\System.Data.SQLite.xml
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csprojAssemblyReference.cache
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csproj.CoreCompileInputs.cache
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.csproj.CopyComplete
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.exe
+S:\Progetti su github\protocolli-progettazione-e-sviluppo-di-client-e-server\RESTful\Server\obj\Debug\AudioLibraryServerRESTful.pdb
